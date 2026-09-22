@@ -1,4 +1,4 @@
-import type { TaskModel } from "../../models/TaskModel";
+import { TaskModel } from "../../models/TaskModel";
 
 export enum TaskActionTypes {
   START_TASK = 'START_TASK',

@@ -8,7 +8,9 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskAction';
-import type { TaskModel } from '../../models/TaskModel';
+import { TaskModel } from '../../models/TaskModel';
+import { Tips } from '../Tips';
+import { TimerWorkerManager } from '../workers/TimerWorkerManager';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -61,7 +63,7 @@ export function MainForm() {
       </div>
 
       <div className='formRow'>
-        <p> aaaa</p>
+        <Tips />
       </div>
 
       {state.currentCycle > 0 && (

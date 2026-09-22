@@ -36,7 +36,7 @@ export function Menu() {
     <a 
       className={styles.menuLink} 
       href='#' 
-      arial-label='Ir para a Home'
+      aria-label='Ir para a Home'
       title='Ir para a Home'>
       <HouseIcon/>
     </a>
@@ -44,7 +44,7 @@ export function Menu() {
     <a 
       className={styles.menuLink} 
       href='#' 
-      arial-label='Visualizar o histórico'
+      aria-label='Visualizar o histórico'
       title='Visualizar histórico'> 
       <HistoryIcon/>
     </a>
@@ -52,7 +52,7 @@ export function Menu() {
     <a 
       className={styles.menuLink} 
       href='#' 
-      arial-label='Ir para as configurações'
+      aria-label='Ir para as configurações'
       title='Ir para as configurações'>
       <SettingsIcon/>
     </a>
@@ -60,7 +60,7 @@ export function Menu() {
     <a 
       className={styles.menuLink} 
       href='#' 
-      arial-label='Mudar o tema'
+      aria-label='Mudar o tema'
       title='Mudar tema'
       onClick={handleThemeChange}>
       {nextThemeIcon[theme]}

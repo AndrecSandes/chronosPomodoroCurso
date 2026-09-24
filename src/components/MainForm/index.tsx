@@ -10,7 +10,6 @@ import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskAction';
 import { TaskModel } from '../../models/TaskModel';
 import { Tips } from '../Tips';
-import { TimerWorkerManager } from '../workers/TimerWorkerManager';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();

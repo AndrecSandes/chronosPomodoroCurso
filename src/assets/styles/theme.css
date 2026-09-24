@@ -25,6 +25,17 @@
   --text-ofuscado: #c0c0c4;
   --desativado: #8a8a8a;
 
+  --toastify-color-light: var(--text-default);
+  --toastify-color-dark: var(--text-default);
+  --toastify-color-info: var(--info);
+  --toastify-color-sucess: var(--sucess);
+  --toastify-color-warning: var(--warning);
+  --toastify-color-error: var(--error);
+  --toastify-color-text-light: var(--black-900);
+  --toastify-text-dark: var(--black-100);
+  --toastify-color-progress-light: var(--coresprimarias-300);
+  --toastify-color-progress-dark: var(--coresprimarias-300);
+
   --link-color: #8257e6;
   --link-hover: #996dff;
   
@@ -57,4 +68,7 @@
 
   --link-color: #6625ff;
   --link-hover: #8652ff;
+
+  --toastify-text-color-light: var(--black-100);
+  --toastify-text-color-light: var(--black-100);
 }

@@ -17,23 +17,20 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
   const worker = TimerWorkerManager.getInstance();
 
   useEffect(() => {
-      worker.onmessage(e => {
-    const countDownSeconds = e.data;
-    console.log(countDownSeconds);
+    worker.onmessage((e) => {
+      const countDownSeconds = e.data;
+      console.log(countDownSeconds);
 
     if (countDownSeconds <= 0) {
       if (playBeepRef.current) {
         playBeepRef.current();
         playBeepRef.current = null;
       }
-      dispatch({
-        type: TaskActionTypes.COMPLETE_TASK,
-      });
-      worker.terminate();
+      dispatch({ type: TaskActionTypes.COMPLETE_TASK });
     } else {
       dispatch({
         type: TaskActionTypes.COUNT_DOWN,
-        payload: { secondsRemaining: countDownSeconds},
+        payload: { secondsRemaining: countDownSeconds },
       });
     }
   });
@@ -41,13 +38,14 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
 
 
   useEffect(() => {
-    if (!state.activeTask) {
-      worker.terminate();
-      return;
+    if (state.activeTask) {
+      worker.postMessage(state);
+    } else {
+      worker.postMessage('reset');
     }
-    worker.postMessage(state);
   }, [worker, state]);
 
+//beep
   useEffect(() => {
     if (state.activeTask && playBeepRef.current === null) {
       playBeepRef.current = loadBeep();

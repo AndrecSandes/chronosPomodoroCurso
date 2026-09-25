@@ -1,25 +1,46 @@
-let isRunning = false;  
+let isRunning = false;
+let timeoutId = null;
+let currentEndDate = 0;  
 
 self.onmessage = function (event) {
-  if (isRunning) return;
+  
+  if (event.data === 'reset') {
+    isRunning = false;
+    currentEndDate = 0;
+    if (timeoutId !== null) {
+      clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+    return;
+  }
 
+  if (isRunning) return;
   isRunning = true;
 
   const state = event.data;
   const { activeTask, secondsRemaining } = state;
 
-  const endDate = activeTask.startDate + secondsRemaining * 1000; 
-  const now = Date.now();
-  let countDownSeconds = Math.ceil((endDate - now) / 1000);
-
+  const endDate = activeTask.startDate + secondsRemaining * 1000;
+  currentEndDate = endDate;
 
   function tick() {
-    self.postMessage(countDownSeconds);
+
+    if (currentEndDate !== endDate) {
+      return;
+    }
 
     const now = Date.now();
-    countDownSeconds = Math.floor((endDate - now) / 1000);
+    const countDownSeconds = Math.max(0, Math.ceil((endDate - now) / 1000));
 
-    setTimeout(tick, 1000);
+    self.postMessage(countDownSeconds);
+
+    if (countDownSeconds <= 0) {
+      isRunning = false;
+      timeoutId = null;
+      return;
+    }
+
+    timeoutId = setTimeout(tick, 1000);
   }
 
   tick();

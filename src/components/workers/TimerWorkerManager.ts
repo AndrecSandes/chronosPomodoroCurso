@@ -4,11 +4,10 @@ export class TimerWorkerManager {
   private worker: Worker;
 
   private constructor() {
-    this.worker = new Worker(new URL('./timerWorkers.js', import.meta.url),
-    { type: 'module' }
-  );
-  
-  };
+      this.worker = new Worker(new URL('./timerWorkers.js', import.meta.url),
+      { type: 'module' }
+    );
+  }
 
   static getInstance() {
     if (!instance) {
@@ -18,7 +17,7 @@ export class TimerWorkerManager {
     return instance;
   }
 
-  postMessage(message: any) {
+  postMessage(message: unknown) {
     this.worker.postMessage(message);
   }
 

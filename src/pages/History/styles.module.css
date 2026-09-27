@@ -1,0 +1,45 @@
+.buttonContainer button {
+  min-width: auto;
+  margin: 0;
+  padding: 1rem; 
+} 
+
+.buttonContainer button svg {
+  width: 2rem;
+  height: 2rem; 
+}
+
+.respossiveTable {
+  overflow-x: auto;
+  border-radius: 0.8rem; 
+} 
+
+.respossiveTable table {
+  width: 100%;
+  min-width: 64rem;
+  font-size: 1.6rem;
+  border-collapse: collapse; 
+} 
+
+.respossiveTable th {
+  background-color: var(--black-600);
+}
+
+.respossiveTable td {
+  background-color: var(--black-800);
+}
+
+.respossiveTable th, .respossiveTable td {
+  border-bottom: 0.2rem solid var(--black-700);
+  text-align: left;
+  padding: 1.6rem;
+}
+
+.thSort {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;  
+}
+
+.thSort:hover {
+  filter: brightness(80%); 
+}

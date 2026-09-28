@@ -33,7 +33,6 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
   useEffect(() => {
     worker.onmessage((e) => {
       const countDownSeconds = e.data;
-
       if (countDownSeconds <= 0) {
         if (playBeepRef.current) {
           playBeepRef.current();
